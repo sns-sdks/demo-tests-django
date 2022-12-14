@@ -124,6 +124,6 @@ FB_APP_ID = ""
 FB_APP_SECRET = ""
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass
