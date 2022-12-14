@@ -20,7 +20,7 @@ def social_account_login(request):
 
 def return_fb_login(request):
     redirect_uri = settings.DOMAIN_URL + reverse('return_fb_login')
-    response_uri = settings.DOMAIN_URL + reverse('return_fb_login') + '?code=' + request.GET['code']
+    response_uri = settings.DOMAIN_URL + reverse('return_fb_login') + '?code=' + request.GET['code'] + "&state=" + request.GET['state']
     api = GraphAPI(app_id=settings.FB_APP_ID, app_secret=settings.FB_APP_SECRET, application_only_auth=True)
     token = api.exchange_user_access_token(response=response_uri, redirect_uri=redirect_uri)
     return JsonResponse(token, safe=False)
